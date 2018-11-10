@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+    <div id="app">
+        <post></post>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <!--<script src="https://unpkg.com/lodash@4.13.1/lodash.min.js"></script>-->
+    <script>
+
+        let User = {
+            data(){
+                return {
+                    name: 'Allan'
+                }
+            },
+            template: `
+                <div class="user">{{ name }}</div>
+            `
+        }
+
+        let Post = {
+            data(){
+                return {
+                    title: 'Some Title Stuff'
+                }
+            },
+            components: {
+              'user': User
+            },
+            template: `
+                <div class="post">
+                    <h1>{{ title }}</h1>
+                    <p>Some text for the post bla bla bla</p>
+                    <user></user>
+                </div>
+            `
+        }
+
+        let app = new Vue({
+            el: '#app',
+            components: {
+                'post' : Post
+            }
+        })
+    </script>
+</body>
+</html>
